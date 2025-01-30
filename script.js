@@ -1,5 +1,7 @@
-let randomNumber ;
-let computerChoice ;
+let randomNumber;
+let computerChoice;
+let input;
+let humanChoice;
 
 // function for get computer choice
 // using the math.radom we going select rock paper scissor
@@ -21,5 +23,28 @@ function getComputerChoice() {
     }
 }
 
+// function for get human choice
+// using the prompt we going get user input
+// after get input then we going to convert the string to uppercase.
+
+function getHumanChoice() {
+    input = prompt("Please enter your choice(rock, paper, scissor) : ").toUpperCase();
+    if (input.toUpperCase() == 'ROCK')
+    {
+        humanChoice = input.toUpperCase();
+    }else if (input.toUpperCase() == 'PAPER')
+    {
+        humanChoice = input.toUpperCase();
+    }else if (input.toUpperCase() == 'SCISSOR')
+    {
+        humanChoice = input.toUpperCase();
+    }else{
+        alert("Wrong choice!");
+    }
+    
+}
+
 getComputerChoice();
 console.log(computerChoice);
+getHumanChoice();
+console.log(humanChoice);

@@ -2,6 +2,8 @@ let randomNumber;
 let computerChoice;
 let input;
 let humanChoice;
+let humanScore = 0;
+let computerScore = 0;
 
 // function for get computer choice
 // using the math.radom we going select rock paper scissor
@@ -22,6 +24,8 @@ function getComputerChoice() {
         computerChoice = "SCISSOR";
     }
 }
+getComputerChoice();
+console.log(computerChoice);
 
 // function for get human choice
 // using the prompt we going get user input
@@ -40,11 +44,51 @@ function getHumanChoice() {
         humanChoice = input.toUpperCase();
     }else{
         alert("Wrong choice!");
+        getHumanChoice();
     }
     
 }
 
-getComputerChoice();
-console.log(computerChoice);
 getHumanChoice();
 console.log(humanChoice);
+
+// function for check the winner
+// if the winner is human then the humanScore will be increase
+// if the winner is computer then the computerScore will be increase
+
+function playRound(computerChoice, humanChoice) {
+    if (computerChoice == humanChoice) {
+        computerScore++;
+        humanScore++;
+        console.log('tie');
+    } else if (computerChoice == 'ROCK') {
+        if (humanChoice == 'PAPER') {
+            humanScore = humanScore + 1;
+            console.log('Human win');
+        } else {
+            computerScore = computerScore + 1;
+            console.log('Computer win');
+        }
+    } else if (computerChoice == 'PAPER') {
+        if (humanChoice == 'ROCK') {
+            computerScore = computerScore + 1;
+            console.log('Computer win');
+        } else {
+            humanScore = humanScore + 1;
+            console.log('Human win');
+        }
+    } else {
+        if (humanChoice == 'ROCK') {
+            humanScore = humanScore + 1;
+            console.log('Human win');
+        } else {
+            computerScore = computerScore + 1;
+            console.log('Computer win');
+        }
+    }
+}
+
+playRound(computerChoice, humanChoice);
+
+console.log(computerScore);
+console.log(humanScore);

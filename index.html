@@ -7,9 +7,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Rock Paper Scissor Game</h1>
-    <p>Press F12 or right-click and choose 'Inspect' to open the console!</p>
-    
+    <div id="container">
+        <h1>Rock Paper Scissor Game</h1>
+        <p>Each time you win a round, you earn 1 point. If the computer wins, it gets 1 point. The game continues until either you or the computer reaches 5 points.</p>
+        <div id="score">
+            <p id="playerScore">Your Score</p>
+            <p id="computerScore">Computer Score</p>
+        </div>
+        <div id="controls">
+            <button>Rock</button>
+            <button>Paper</button>
+            <button>Scissor</button>
+        </div>
+    </div>
     <script src="script.js"> </script>
 </body>
 </html>

@@ -9,15 +9,16 @@
 <body>
     <div id="container">
         <h1>Rock Paper Scissor Game</h1>
-        <p>Each time you win a round, you earn 1 point. If the computer wins, it gets 1 point. The game continues until either you or the computer reaches 5 points.</p>
+        <p>The game continues until either you or the computer reaches 5 points.</p>
         <div id="score">
-            <p id="playerScore">Your Score</p>
-            <p id="computerScore">Computer Score</p>
+            <p>Your Score : <span id="playerScore">0</span></p>
+            <p>Computer Score : <span id="computerScore">0</span></p>
         </div>
+        <p id="message"></p>
         <div id="controls">
-            <button>Rock</button>
-            <button>Paper</button>
-            <button>Scissor</button>
+            <button id="rock">Rock</button>
+            <button id="paper">Paper</button>
+            <button id="scissor">Scissor</button>
         </div>
     </div>
     <script src="script.js"> </script>

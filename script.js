@@ -1,10 +1,19 @@
 let randomNumber;
 let computerChoice;
-let input;
 let humanChoice;
 let humanScore = 0;
 let computerScore = 0;
-let count = 1;
+const playerScore = document.querySelector('#playerScore');
+const AiScore = document.querySelector('#computerScore');
+const message = document.querySelector('#message');
+const input = document.querySelector('#controls');
+
+input.addEventListener("click", (e) => {
+    computerChoice = getComputerChoice();
+    humanChoice = e.target.id.toUpperCase();
+    playRound(computerChoice, humanChoice);
+    playGame();
+})
 
 // function for get computer choice
 // using the math.radom we going select rock paper scissor
@@ -26,60 +35,39 @@ function getComputerChoice() {
     }
 }
 
-
-// function for get human choice
-// using the prompt we going get user input
-// after get input then we going to convert the string to uppercase.
-
-function getHumanChoice() {
-    input = prompt("Please enter your choice(rock, paper, scissor) : ").toUpperCase();
-    if (input == 'ROCK' || input == 'PAPER' || input == 'SCISSOR')
-    {
-        return input;
-    }else{
-        alert("Wrong choice!");
-        getHumanChoice();
-    }
-}
-
-
 // function for check the winner
 // if the winner is human then the humanScore will be increase
 // if the winner is computer then the computerScore will be increase
 
 function playRound(computerChoice, humanChoice) {
-    console.log(computerChoice);
-    console.log(humanChoice);
+    message.textContent = ``;
     if (computerChoice == humanChoice) {
-        console.log(`Round ${count} Tie!, Your choice ${humanChoice} Computer choice ${computerChoice}.`);
+        message.textContent = `It's a tie.`;
     }
     else if ((computerChoice == 'ROCK' && humanChoice == 'SCISSOR') || (computerChoice == 'PAPER' && humanChoice == 'ROCK') || (computerChoice == 'SCISSOR' && humanChoice == 'PAPER')) {
         computerScore++;
-        console.log(`Round ${count} Computer Wins!, Your choice ${humanChoice} Computer choice ${computerChoice}.`);
-        
+        message.textContent = `Computer wins.`;
     }
     else {
         humanScore++;
-        console.log(`Round ${count} Human Wins!, Your choice ${humanChoice} Computer choice ${computerChoice}.`);
+        message.textContent = `You win.`;
     }
 }
 
 function playGame() {
-    if (count <= 5) {
-        console.log(`\nStarting Round ${count}:`);
-        computerChoice = getComputerChoice();
-        humanChoice = getHumanChoice();
-        playRound(computerChoice, humanChoice);
-        count++;
-        playGame();
-    } else {
-        if (computerScore == humanScore) {
-            console.log(`\nGame over! It's a tie. Computer score: ${computerScore}, Your score: ${humanScore}`);
-        } else if (computerScore > humanScore) {
-            console.log(`\nGame over! Computer wins. Computer score: ${computerScore}, Your score: ${humanScore}`);
+    if(computerScore >= 5 || humanScore >= 5) {
+        if (computerScore > humanScore) {
+            message.textContent = `Game over! Computer wins.`;
         } else {
-            console.log(`\nGame over! You win! Computer score: ${computerScore}, Your score: ${humanScore}`);
+            message.textContent = `Game over! You win.`;
         }
+        playerScore.textContent = humanScore;
+        AiScore.textContent = computerScore;
+        humanScore = 0;
+        computerScore = 0;
+    }
+    else {
+        playerScore.textContent = humanScore;
+        AiScore.textContent = computerScore;
     }
 }
-
